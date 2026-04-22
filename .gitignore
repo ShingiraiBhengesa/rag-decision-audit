@@ -1,0 +1,83 @@
+# ============================================
+# Large inherited directories — never push
+# ============================================
+elasticsearch/
+repos/
+data/
+
+# ============================================
+# Model/data files
+# ============================================
+*.pkl
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.tar.gz
+*.jsonl
+
+# ============================================
+# Experiment outputs (regeneratable)
+# ============================================
+experiments/*/results/
+*.csv
+*.tsv
+arag_plots_*.err
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+*.out
+*.err
+!arag_plots_100819.out
+
+# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+venv/
+env/
+.venv/
+
+# ============================================
+# Editors
+# ============================================
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# ============================================
+# Paper build artifacts
+# ============================================
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.pdf
+paper/*.synctex.gz
+paper/_minted*/
+
+# ============================================
+# CLAUDE.md and notes — private, never push
+# ============================================
+CLAUDE.md
+notes/
+
+# ============================================
+# Secrets
+# ============================================
+.env
+*.key
+credentials.json

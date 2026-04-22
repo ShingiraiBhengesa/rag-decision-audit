@@ -1,0 +1,122 @@
+{
+  "nq": {
+    "type": "single-hop",
+    "n": 500,
+    "adaptive": 47.4,
+    "nor": 20.4,
+    "oner": 47.599999999999994,
+    "ircot": 46.400000000000006,
+    "routes": {
+      "A": 4,
+      "B": 496,
+      "C": 0
+    },
+    "route_acc": {
+      "A": 2,
+      "B": 235,
+      "C": 0
+    },
+    "best_ind": 47.599999999999994,
+    "diff": -0.19999999999999574
+  },
+  "trivia": {
+    "type": "single-hop",
+    "n": 500,
+    "adaptive": 57.599999999999994,
+    "nor": 35.4,
+    "oner": 61.8,
+    "ircot": 59.4,
+    "routes": {
+      "A": 87,
+      "B": 387,
+      "C": 26
+    },
+    "route_acc": {
+      "A": 44,
+      "B": 227,
+      "C": 17
+    },
+    "best_ind": 61.8,
+    "diff": -4.200000000000003
+  },
+  "squad": {
+    "type": "single-hop",
+    "n": 500,
+    "adaptive": 33.6,
+    "nor": 8.4,
+    "oner": 35.0,
+    "ircot": 30.2,
+    "routes": {
+      "A": 23,
+      "B": 429,
+      "C": 48
+    },
+    "route_acc": {
+      "A": 4,
+      "B": 146,
+      "C": 18
+    },
+    "best_ind": 35.0,
+    "diff": -1.3999999999999986
+  },
+  "musique": {
+    "type": "multi-hop",
+    "n": 500,
+    "adaptive": 21.4,
+    "nor": 4.0,
+    "oner": 15.8,
+    "ircot": 19.2,
+    "routes": {
+      "A": 9,
+      "B": 83,
+      "C": 408
+    },
+    "route_acc": {
+      "A": 4,
+      "B": 29,
+      "C": 74
+    },
+    "best_ind": 19.2,
+    "diff": 2.1999999999999993
+  },
+  "hotpotqa": {
+    "type": "multi-hop",
+    "n": 500,
+    "adaptive": 45.6,
+    "nor": 18.4,
+    "oner": 39.6,
+    "ircot": 49.4,
+    "routes": {
+      "A": 52,
+      "B": 137,
+      "C": 311
+    },
+    "route_acc": {
+      "A": 24,
+      "B": 60,
+      "C": 144
+    },
+    "best_ind": 49.4,
+    "diff": -3.799999999999997
+  },
+  "2wikimultihopqa": {
+    "type": "multi-hop",
+    "n": 500,
+    "adaptive": 51.2,
+    "nor": 25.6,
+    "oner": 46.2,
+    "ircot": 62.6,
+    "routes": {
+      "A": 144,
+      "B": 66,
+      "C": 290
+    },
+    "route_acc": {
+      "A": 70,
+      "B": 17,
+      "C": 169
+    },
+    "best_ind": 62.6,
+    "diff": -11.399999999999999
+  }
+}

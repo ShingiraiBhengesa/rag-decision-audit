@@ -1,0 +1,219 @@
+{
+  "experiment": "Adaptive-RAG Extended Evaluation",
+  "date": "2026-04-07",
+  "classifier": {
+    "model": "T5-Large (~770M params)",
+    "training_examples": 3809,
+    "best_epoch": 30,
+    "validation_accuracy": 49.96,
+    "per_class_validation": {
+      "A_accuracy": 28.32,
+      "B_accuracy": 62.05,
+      "C_accuracy": 64.1,
+      "A_pred_num": 257,
+      "B_pred_num": 748,
+      "C_pred_num": 410,
+      "A_gold_num": 519,
+      "B_gold_num": 701,
+      "C_gold_num": 195
+    }
+  },
+  "six_dataset_evaluation": {
+    "nq": {
+      "type": "single-hop",
+      "n": 500,
+      "adaptive": 47.4,
+      "no_ret_A": 20.4,
+      "single_B": 47.6,
+      "multi_C": 46.4,
+      "routing": {
+        "A": 4,
+        "B": 496,
+        "C": 0
+      },
+      "routing_accuracy_vs_oracle": 32.0,
+      "adaptive_vs_best": -0.2
+    },
+    "trivia": {
+      "type": "single-hop",
+      "n": 500,
+      "adaptive": 57.6,
+      "no_ret_A": 35.4,
+      "single_B": 61.8,
+      "multi_C": 59.4,
+      "routing": {
+        "A": 87,
+        "B": 387,
+        "C": 26
+      },
+      "routing_accuracy_vs_oracle": 34.8,
+      "adaptive_vs_best": -4.2
+    },
+    "squad": {
+      "type": "single-hop",
+      "n": 500,
+      "adaptive": 33.6,
+      "no_ret_A": 8.4,
+      "single_B": 35.0,
+      "multi_C": 30.2,
+      "routing": {
+        "A": 23,
+        "B": 429,
+        "C": 48
+      },
+      "routing_accuracy_vs_oracle": 29.8,
+      "adaptive_vs_best": -1.4
+    },
+    "musique": {
+      "type": "multi-hop",
+      "n": 500,
+      "adaptive": 21.4,
+      "no_ret_A": 4.0,
+      "single_B": 15.8,
+      "multi_C": 19.2,
+      "routing": {
+        "A": 9,
+        "B": 83,
+        "C": 408
+      },
+      "routing_accuracy_vs_oracle": 76.6,
+      "adaptive_vs_best": 2.2,
+      "per_route_accuracy": {
+        "A": 44.4,
+        "B": 34.9,
+        "C": 18.1
+      },
+      "oracle_accuracy": 26.6,
+      "oracle_label_distribution": {
+        "A": 20,
+        "B": 72,
+        "C": 408
+      }
+    },
+    "hotpotqa": {
+      "type": "multi-hop",
+      "n": 500,
+      "adaptive": 45.6,
+      "no_ret_A": 18.4,
+      "single_B": 39.6,
+      "multi_C": 49.4,
+      "routing": {
+        "A": 52,
+        "B": 137,
+        "C": 311
+      },
+      "routing_accuracy_vs_oracle": 53.4,
+      "adaptive_vs_best": -3.8
+    },
+    "2wikimultihopqa": {
+      "type": "multi-hop",
+      "n": 500,
+      "adaptive": 51.2,
+      "no_ret_A": 25.6,
+      "single_B": 46.2,
+      "multi_C": 62.6,
+      "routing": {
+        "A": 144,
+        "B": 66,
+        "C": 290
+      },
+      "routing_accuracy_vs_oracle": 53.0,
+      "adaptive_vs_best": -11.4
+    }
+  },
+  "musique_attack_analysis": {
+    "queries_routed_to_C": 408,
+    "C_accuracy": 18.1,
+    "if_forced_to_A": {
+      "accuracy": 3.2,
+      "drop_pp": 15.0,
+      "queries_losing_correct": 66
+    },
+    "if_forced_to_B": {
+      "accuracy": 11.8,
+      "drop_pp": 6.4,
+      "queries_losing_correct": 42
+    },
+    "system_wide_impact": {
+      "current_adaptive": 21.4,
+      "10pct_downgrade": {
+        "accuracy": 14.2,
+        "drop": 7.2
+      },
+      "20pct_downgrade": {
+        "accuracy": 8.2,
+        "drop": 13.2
+      },
+      "30pct_downgrade": {
+        "accuracy": 8.6,
+        "drop": 12.8
+      },
+      "50pct_downgrade": {
+        "accuracy": 8.8,
+        "drop": 12.6
+      },
+      "100pct_downgrade": {
+        "accuracy": 9.2,
+        "drop": 12.2
+      }
+    }
+  },
+  "new_dataset_routing": {
+    "strategyqa": {
+      "description": "Multi-hop reasoning disguised as yes/no questions",
+      "n": 687,
+      "expected_route": "C (multi-step)",
+      "routing": {
+        "A": 64,
+        "B": 525,
+        "C": 98
+      },
+      "routing_pct": {
+        "A": 9.3,
+        "B": 76.4,
+        "C": 14.3
+      },
+      "finding": "Classifier fooled by surface simplicity - sends 76% to B when most need C"
+    },
+    "boolq": {
+      "description": "Simple factual yes/no questions",
+      "n": 500,
+      "expected_route": "A (no retrieval)",
+      "routing": {
+        "A": 32,
+        "B": 460,
+        "C": 8
+      },
+      "routing_pct": {
+        "A": 6.4,
+        "B": 92.0,
+        "C": 1.6
+      },
+      "finding": "Classifier defaults to B even for genuinely simple queries"
+    },
+    "complexwebquestions": {
+      "description": "Explicitly complex web queries",
+      "n": 500,
+      "expected_route": "C (multi-step)",
+      "routing": {
+        "A": 16,
+        "B": 168,
+        "C": 316
+      },
+      "routing_pct": {
+        "A": 3.2,
+        "B": 33.6,
+        "C": 63.2
+      },
+      "finding": "Best new dataset result - 63% to C. Still under-routes 34% to B"
+    }
+  },
+  "key_findings": {
+    "1": "Classifier works on only 1/6 original datasets (MuSiQue, +2.2pp over best strategy)",
+    "2": "MuSiQue routing accuracy is 76.6% vs oracle, driven by correct C-routing (86.3%)",
+    "3": "Classifier has massive Route B default bias across all single-hop datasets",
+    "4": "On new datasets, classifier is fooled by surface simplicity (StrategyQA: 76% to B)",
+    "5": "Attack on MuSiQue: downgrading 10% of C queries causes 7.2pp system-wide drop",
+    "6": "No dataset achieves 80%+ routing accuracy - MuSiQue at 76.6% is the ceiling"
+  }
+}
