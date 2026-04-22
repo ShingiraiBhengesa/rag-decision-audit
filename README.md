@@ -23,4 +23,4 @@ Experiments require access to baseline RAG system checkpoints and Wikipedia corp
 
 ## Authors
 
-Shingirai Bhengesa, advised by Dr. Tourani. Saint Louis University.
+Shingirai Bhengesa, Saint Louis University.
